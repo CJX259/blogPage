@@ -6,11 +6,7 @@
 <script>
 let axios = require('axios');
 export default {
-  components : {
-    haed (){
-      return import("./components/Header")
-    }
-  }
+  
 }
 </script>
 <style>

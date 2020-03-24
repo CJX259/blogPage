@@ -1,17 +1,20 @@
 <template>
   <div>
     <div class="title">
-      <p>404 NotFound!!</p>
+      <p>404 NotFound!!  页面不见啦</p>
+      <div>
+        <button>开始游戏</button>
+      </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  // mounted() {
-  //   const oScript1 = document.createElement("script");
-  //   oScript1.src = "http://129.204.189.5:8080/js/snakejs/base.js";
-  //   document.body.appendChild(oScript1);
-  // }
+  mounted() {
+    const oScript1 = document.createElement("script");
+    oScript1.src = "http://129.204.189.5/js/snakejs/base.js";
+    document.body.appendChild(oScript1);
+  }
 };
 </script>
 

@@ -16,6 +16,7 @@
 </template>
 
 <script>
+let axios = require("axios");
 export default {
   components: {
     Header() {
@@ -34,17 +35,17 @@ export default {
       return import("../components/Foot");
     }
   },
-  computed:{
-    background(){
-      return require("../assets/" + "爱丽丝.jpg");
-    }
-  },
+  // computed: {
+  //   background() {
+  //     return require("../assets/" + "爱丽丝.jpg");
+  //   }
+  // },
   beforeUpdate() {
-    let oImg = new Image();
-    oImg.src = this.background;
-    oImg.onload = ()=> {
-      this.$refs.wrapper.style.backgroundImage = "url(" + oImg.src + ")";
-    };
+    // let oImg = new Image();
+    // oImg.src = this.background;
+    // oImg.onload = () => {
+    //   this.$refs.wrapper.style.backgroundImage = "url(" + oImg.src + ")";
+    // };
   },
   mounted() {}
 };
