@@ -15,7 +15,7 @@
 <script>
 export default {
   components: {
-    MapBlogs: _ => import("../components/MapBlogs")
+    MapBlogs: () => import("../components/MapBlogs")
   }
 };
 </script>

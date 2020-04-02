@@ -16,7 +16,6 @@
 </template>
 
 <script>
-let axios = require("axios");
 export default {
   components: {
     Header() {

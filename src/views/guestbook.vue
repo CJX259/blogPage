@@ -17,7 +17,7 @@
 <script>
 export default {
   components: {
-    Comments: _ => import("../components/Comments")
+    Comments: () => import("../components/Comments")
   }
 };
 </script>

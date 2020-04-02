@@ -102,7 +102,7 @@ export default {
           "&parentName=" +
           this.parentName,
         method: "get"
-      }).then(resp => {
+      }).then(() => {
         alert("留言成功");
         // 此处想要触发vue重新渲染
         this.getComments();

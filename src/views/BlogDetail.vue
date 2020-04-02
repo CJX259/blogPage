@@ -22,7 +22,7 @@ export default {
     ...mapState(["bid"])
   },
   components: {
-    Comments: _ => import("../components/Comments")
+    Comments: () => import("../components/Comments")
   },
   methods: {
     getBlog() {

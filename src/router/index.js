@@ -17,27 +17,27 @@ const routes = [
       {
         path: "about",
         name: "about",
-        component: _ => import('../views/About')
+        component: () => import('../views/About')
       },
       {
         path: "guestbook",
         name: "guestbook",
-        component: _ => import("../views/guestbook")
+        component: () => import("../views/guestbook")
       },
       {
         path: "blog_detail",
         name: "blog_detail",
-        component: _ => import('../views/BlogDetail')
+        component: () => import('../views/BlogDetail')
       },
       {
         path: "/sitemap",
         name: "map",
-        component: _ => import("../views/SiteMap")
+        component: () => import("../views/SiteMap")
       },
       {
         path: "index",
         name: "index",
-        component: _ => import("../views/index")
+        component: () => import("../views/index")
       }
     ]
   },
@@ -45,17 +45,17 @@ const routes = [
   {
     path: "/edit_every_day",
     name: "edit_every_day",
-    component: _ => import('../views/EditEveryDay')
+    component: () => import('../views/EditEveryDay')
   },
   {
     path: "/edit_blog",
     name: "edit_blog",
-    component: _ => import('../views/EditBlog')
+    component: () => import('../views/EditBlog')
   },
   {
     path : "*",
     name : "error",
-    component : _=>import('../views/NotFound')
+    component : ()=>import('../views/NotFound')
   }
 ]
 

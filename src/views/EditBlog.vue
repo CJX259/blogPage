@@ -31,7 +31,7 @@ export default {
         url: "/editBlog",
         method: "post",
         data
-      }).then(function(resp) {
+      }).then(function() {
         alert("成功");
       });
     }
