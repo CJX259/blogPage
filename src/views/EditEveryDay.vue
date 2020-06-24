@@ -16,7 +16,7 @@ export default {
         method: "post",
         data: content
       })
-        .then(function(resp) {
+        .then(function() {
           alert("提交成功");
           // let result = JSON.pares(resp);
           // alert(result.msg);

@@ -101,7 +101,7 @@ export default {
 }
 #blogDetail > h1 {
   width: 95%;
-  height: 30px;
+  min-height: 30px;
   line-height: 30px;
   padding: 10px 0px 15px 5%;
   border-bottom: 1px solid gray;
@@ -128,10 +128,6 @@ export default {
 @media (max-width: 900px) {
   #blogDetail > h1 {
     font-size: 24px;
-    width: 95%;
-    height: 30px;
-    line-height: 30px;
-    padding: 10px 0px 5px 5%;
   }
 
   #blogDetail > span {
