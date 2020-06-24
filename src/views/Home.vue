@@ -54,6 +54,13 @@ export default {
   },
   methods: {
     showMenu() {
+      var w =
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth;
+      if (w > 950) {
+        return;
+      }
       if (this.showUl) {
         return;
       }
@@ -115,7 +122,7 @@ export default {
   height: 30px;
   background-image: url("../assets/toTop.png");
   background-position: center center;
-  opacity: .6;
+  opacity: 0.6;
   border-radius: 50%;
   background-size: 30px;
   position: fixed;
