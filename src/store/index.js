@@ -14,9 +14,13 @@ export default new Vuex.Store({
       limit: 3,
       display: true,
       totalPage : 0
-    }
+    },
+    showUl : false
   },
   mutations: {
+    setShowUl(state, flag){
+      state.showUl = flag;
+    },
     changeBid(state, bid) {
       state.bid = bid;
     },

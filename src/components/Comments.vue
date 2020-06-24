@@ -48,8 +48,8 @@ export default {
       // bid: null
     };
   },
-  computed:{
-    ...mapState(['bid'])
+  computed: {
+    ...mapState(["bid"])
   },
   methods: {
     huifu(parentName) {
@@ -129,13 +129,10 @@ export default {
       this.initData();
       // if (this.$route.query.bid) {
       //   this.bid = this.$route.query.bid;
-      // } 
-      if (
-        this.$route.path == "/about" ||
-        this.$route.path == "/guestbook"
-      ) {
+      // }
+      if (this.$route.path == "/about" || this.$route.path == "/guestbook") {
         // this.bid = -1;
-        this.$store.commit('changeBid', -1);
+        this.$store.commit("changeBid", -1);
       }
     },
     getComments() {
@@ -257,5 +254,30 @@ export default {
 
 #addComment > span {
   cursor: pointer;
+}
+@media (max-width: 900px) {
+  .addComment input {
+    width: 80%;
+  }
+
+  .addComment textarea {
+    width: 80%;
+    
+  }
+
+  .addComment button {
+    display: block;
+    width: 100px;
+    background: white;
+    margin: 5px 0px 10px 10px;
+    height: 30px;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 4px;
+  }
+
+  #addComment > span {
+    cursor: pointer;
+  }
 }
 </style>

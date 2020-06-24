@@ -1,8 +1,9 @@
 <template>
   <header class="header">
     <div class="header_content">
-      <span @click="toHome" class="title">Jessy's Blog | Tech Blog</span>|
-      <ul class="menu">
+      <span @click="showMenu" class="btn">三</span>
+      <span @click="toHome" class="title">Jessy's Blog | Tech Blog</span>
+      <ul class="menu" ref="menu">
         <li>
           <span class="blog-title" @click="toHome">Blogs</span>
         </li>
@@ -33,6 +34,15 @@ export default {
       search: ""
     };
   },
+  watch: {
+    showUl() {
+      if (!this.showUl) {
+        this.$refs.menu.style.transform = "scale(1)";
+      } else {
+        this.$refs.menu.style.transform = "scale(0)";
+      }
+    }
+  },
   methods: {
     toHome() {
       this.$store.commit("clearTagId");
@@ -41,6 +51,9 @@ export default {
       this.$router.push({
         path: "/index"
       });
+    },
+    showMenu() {
+      this.$store.commit("setShowUl", !this.showUl);
     },
     toMap() {
       this.$store.commit("clearTagId");
@@ -65,6 +78,9 @@ export default {
     }
   },
   computed: {
+    showUl() {
+      return this.$store.state.showUl;
+    },
     submitSearch() {
       return function() {
         this.$store.commit("changePager", { nowPage: 1 });
@@ -104,6 +120,7 @@ export default {
   position: relative;
   height: 50px;
   opacity: 0.8;
+  z-index: 100;
   background: #191818;
 }
 .header_content {
@@ -111,6 +128,9 @@ export default {
   height: 100%;
   position: relative;
   margin: 0 auto;
+}
+.header_content .btn {
+  display: none;
 }
 .header_content .title {
   position: absolute;
@@ -179,5 +199,51 @@ export default {
   border-radius: 5px;
   padding: 0 10px;
   border: none;
+}
+@media (max-width: 900px) {
+  .header_content {
+    width: 100%;
+  }
+  .header_content .title {
+    display: none;
+  }
+  .header_content .btn {
+    display: inline;
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    left: 5vw;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* ul */
+  .header_content .menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 0px;
+    top: 50px;
+    width: 30vw;
+    height: 200px;
+    background-color: #191818;
+    border-radius: 4px;
+    transform-origin: 0px 0px;
+    transition: all 0.2s;
+    transform: scale(0);
+    z-index: 100;
+  }
+  .header_content .menu > li {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    z-index: 100;
+  }
+  .header_content .menu > li:nth-of-type(n + 2) {
+    border-top: 1px #eee solid;
+  }
+  .header_content .search-bar > input {
+    width: 40vw;
+  }
 }
 </style>

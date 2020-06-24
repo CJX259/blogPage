@@ -17,14 +17,16 @@ export default {
   name: "pageTools",
   data() {
     return {
-      pageList: [],
+      pageList: []
       // totalPage : 0
     };
   },
   methods: {
     refresh: function() {
       //更改总页数
-      this.$store.commit('changePager', {totalPage : Math.ceil(this.pager.total / this.pager.limit)})
+      this.$store.commit("changePager", {
+        totalPage: Math.ceil(this.pager.total / this.pager.limit)
+      });
       this.pageList = [];
       this.pageList.push({ text: "首页", pageNum: 1 });
       if (this.pager.nowPage - 1 > 0) {
@@ -209,9 +211,14 @@ export default {
   background: white;
   color: #000;
 }
-.unAllow{
-  color :red;
+.unAllow {
+  color: red;
   /* pointer-events: none; */
 }
-
+@media (max-width: 900px) {
+  #pageTools > ul {
+    display: flex;
+    justify-content: center;
+  }
+}
 </style>

@@ -2,7 +2,12 @@
   <div>
     <div id="blogDetail">
       <h1>{{content.title}}</h1>
-      <span>作者：陈建希 发布于：{{content.ctime}} 浏览({{content.views}}) 标签：{{content.tags}}</span>
+      <span>标签：{{content.tags}}</span>
+      <br />
+      <span>浏览({{content.views}})</span>
+      <span>作者: 建希</span>
+      <br />
+      <span>发布于：{{content.ctime}}</span>
       <div id="blog_content" v-html="content.content"></div>
     </div>
     <Comments />
@@ -48,7 +53,7 @@ export default {
         });
       } else if (localStorage.getItem("bid")) {
         // this.bid = +localStorage.getItem("bid");
-        this.$store.commit('changeBid', +localStorage.getItem('bid'));
+        this.$store.commit("changeBid", +localStorage.getItem("bid"));
         axios({
           url: "/getBlogById?bid=" + this.bid,
           method: "get"
@@ -79,6 +84,9 @@ export default {
   /* overflow-y: scroll; */
   /* overflow-x: hidden; */
 }
+#blogDetail br {
+  display: none;
+}
 #blogDetail::-webkit-scrollbar {
   width: 10px;
   height: 8px;
@@ -92,10 +100,11 @@ export default {
   background-color: #555;
 }
 #blogDetail > h1 {
-  width: 100%;
+  width: 95%;
   height: 30px;
   line-height: 30px;
-  padding: 10px 0px 5px 20px;
+  padding: 10px 0px 15px 5%;
+  border-bottom: 1px solid gray;
 }
 
 #blogDetail > span {
@@ -104,6 +113,9 @@ export default {
   height: 30px;
   line-height: 30px;
   padding: 5px 0px 5px 20px;
+  border-bottom: none;
+}
+#blogDetail > span:nth-last-of-type(1) {
   border-bottom: 1px solid gray;
 }
 
@@ -113,83 +125,23 @@ export default {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-#blogComment {
-  width: 100%;
-  margin: 20px 0px 0px 0px;
-  opacity: 0.9;
-  background: #fff;
-  box-shadow: 4px 4px 4px;
-  padding: 20px 10px 20px 10px;
-  box-sizing: border-box;
-  border-radius: 8px;
-}
+@media (max-width: 900px) {
+  #blogDetail > h1 {
+    font-size: 24px;
+    width: 95%;
+    height: 30px;
+    line-height: 30px;
+    padding: 10px 0px 5px 5%;
+  }
 
-#blogComment ul {
-  width: 98%;
-}
-
-#blogComment .user_name {
-  font-weight: 600;
-}
-#blogComment ul li {
-  list-style: none;
-  background: #d9edf7;
-  border: 1px dashed #7ca4c1;
-  margin: 10px 0px 0px 0px;
-  padding: 10px 0px 10px 10px;
-  border-radius: 5px;
-}
-
-#blogComment ul li span {
-  /*background: pink;*/
-  padding: 5px 0px 5px 10px;
-}
-
-#blogComment ul li p {
-  margin: 20px 0px 0px 10px;
-}
-
-.addComment {
-  margin-top: 20px;
-  box-shadow: 4px 4px 4px;
-  width: 100%;
-  border: 1px solid grey;
-  background: #fff;
-  opacity: 0.9;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
-.addComment input {
-  width: 300px;
-  height: 30px;
-  border-radius: 5px;
-  margin: 15px 0px 5px 10px;
-  outline: none;
-  padding-left: 5px;
-}
-
-.addComment textarea {
-  width: 620px;
-  height: 100px;
-  margin: 5px 0px 5px 10px;
-  font-size: 16px;
-  padding: 5px 5px 5px 5px;
-  resize: none;
-}
-
-.addComment button {
-  display: block;
-  width: 100px;
-  background: white;
-  margin: 5px 0px 10px 10px;
-  height: 30px;
-  cursor: pointer;
-  border: 1px solid grey;
-  border-radius: 4px;
-}
-
-#addComment > span {
-  cursor: pointer;
+  #blogDetail > span {
+    display: inline-block;
+    font-size: 12px;
+    width: 95%;
+    height: 15px;
+    line-height: 15px;
+    padding: 5px 0px 5px 5%;
+    border-bottom: none;
+  }
 }
 </style>

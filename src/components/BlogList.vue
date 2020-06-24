@@ -1,15 +1,14 @@
 <template>
   <div id="blog-list">
     <ul>
-      <li class="blog" v-for="blog in blogs" :key="blog.id">
-        <span @click="toDetail(blog.id)" class="blog-title">{{blog.title}}</span>
+      <li @click="toDetail(blog.id)" class="blog" v-for="blog in blogs" :key="blog.id">
+        <span class="blog-title">{{blog.title}}</span>
         <p v-html="blog.content"></p>
         <div class="blog-foot">
-          Issued: {{blog.ctime}} | Page Views: {{blog.views}} |
-          <span
-            v-for="tag in blog.tags"
-            :key="tag.id"
-          >{{tag}}</span>
+          Issued: {{blog.ctime}} | Views: {{blog.views}}
+          <br />
+          <span>Tags:</span>
+          <span v-for="tag in blog.tags" :key="tag.id">{{tag}}</span>
         </div>
       </li>
     </ul>
@@ -17,7 +16,7 @@
 </template>
 <script>
 let axios = require("axios");
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 // 设置一个函数，让其他组件能够修改blogs值
 // 此组件与page组件有关联，相互调用方法
 export default {
@@ -26,7 +25,7 @@ export default {
     return {
       // 每页展示三个就好
       // limit: 3,
-      blogs: [],
+      blogs: []
       // tagId: ""
     };
   },
@@ -95,12 +94,12 @@ export default {
       this.$store.commit("changePager", { display: true });
       // 初始化tagId
       // this.$store.commit('changeTagId', "");
-      if(localStorage.getItem('tagId')){
-        this.$store.commit('changeTagId', +localStorage.getItem('tagId'));
+      if (localStorage.getItem("tagId")) {
+        this.$store.commit("changeTagId", +localStorage.getItem("tagId"));
       }
       // 拿到tagId
       // if (this.$route.params.tagId) {
-        // this.$store.commit('changeTagId', this.$route.params.tagId);
+      // this.$store.commit('changeTagId', this.$route.params.tagId);
       // }
       if (this.tagId != "") {
         // 调用pageTool的方法，获得该tags下的blogs总数   防止双方组件的tagId不一致，使用此方法
@@ -120,7 +119,7 @@ export default {
     $route: "begin"
   },
   computed: {
-    ...mapState(['pager', 'tagId'])
+    ...mapState(["pager", "tagId"])
   },
   created() {
     //绑定给外部组件修改blogs的接口
@@ -185,7 +184,18 @@ export default {
   padding: 5px 0px 5px 9px;
   color: white;
 }
-#blog-list .blog .blog-foot > span {
-  margin-left: 10px;
+
+@media (min-width: 900px) {
+  #blog-list .blog .blog-foot > br {
+    display: none;
+  }
+  #blog-list .blog .blog-foot > span {
+    margin-left: 10px;
+  }
+}
+@media (max-width: 900px) {
+  #blog-list .blog .blog-foot {
+    font-size: 12px;
+  }
 }
 </style>

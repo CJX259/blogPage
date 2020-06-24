@@ -45,7 +45,7 @@ ul {
 }
 
 li {
-  height: 30px;
+  min-height: 30px;
   width: 72%;
   line-height: 30px;
   font-size: 16px;
@@ -56,6 +56,7 @@ li {
 li span {
   /* float:right; */
   display: inline-block;
+
   /* margin-right: 10px; */
   /* display: inline-block; */
   width: 50%;
@@ -67,4 +68,5 @@ li span {
   color: #010101;
   cursor: pointer;
 }
+
 </style>
